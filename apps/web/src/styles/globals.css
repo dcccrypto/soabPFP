@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-jetbrains-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    @apply bg-background-primary text-text-primary antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  ::selection {
+    @apply bg-brand-primary/30 text-text-primary;
+  }
+}
+
+@layer components {
+  /* Interactive Elements */
+  .btn-primary {
+    @apply px-4 py-2 bg-brand-primary text-white rounded-lg
+           hover:bg-brand-primary/90 active:bg-brand-primary/80
+           disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand-primary/50
+           shadow-lg shadow-brand-primary/20;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-background-secondary text-text-primary rounded-lg
+           hover:bg-background-tertiary active:bg-background-tertiary/90
+           border border-text-tertiary/10
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand-primary/50;
+  }
+
+  .input-primary {
+    @apply w-full px-4 py-2 bg-background-secondary rounded-lg
+           border border-text-tertiary/10
+           focus:border-brand-primary focus:ring-1 focus:ring-brand-primary
+           placeholder:text-text-tertiary
+           transition-all duration-200;
+  }
+
+  /* Cards and Containers */
+  .card {
+    @apply bg-background-secondary rounded-xl p-6
+           border border-text-tertiary/10
+           shadow-lg shadow-black/5
+           backdrop-blur-sm
+           transition-all duration-300
+           hover:shadow-xl hover:shadow-brand-primary/5;
+  }
+
+  .glass-panel {
+    @apply bg-background-secondary/80 backdrop-blur-md
+           border border-text-tertiary/10
+           rounded-xl shadow-lg;
+  }
+
+  /* Typography */
+  .heading-gradient {
+    @apply bg-gradient-brand bg-clip-text text-transparent
+           font-bold tracking-tight;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-brand bg-clip-text text-transparent;
+  }
+
+  /* Animations */
+  .hover-glow {
+    @apply transition-all duration-300
+           hover:shadow-glow-md hover:text-glow;
+  }
+
+  .float-animation {
+    @apply animate-float;
+  }
+
+  /* Loading States */
+  .loading-spinner {
+    @apply w-5 h-5 border-2 rounded-full
+           border-brand-primary/30 border-t-brand-primary
+           animate-spin;
+  }
+
+  .loading-pulse {
+    @apply animate-pulse bg-background-tertiary
+           rounded-lg overflow-hidden;
+  }
+
+  /* Scrollbars */
+  .custom-scrollbar {
+    @apply scrollbar-thin scrollbar-track-background-tertiary
+           scrollbar-thumb-text-tertiary/50
+           hover:scrollbar-thumb-text-tertiary/70;
+  }
+}
+
+@layer utilities {
+  /* Parallax Effects */
+  .parallax {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .parallax-layer {
+    transform: translateZ(0);
+    transition: transform 0.5s ease-out;
+  }
+
+  .parallax-deep {
+    transform: translateZ(-100px) scale(1.5);
+  }
+
+  .parallax-shallow {
+    transform: translateZ(50px) scale(0.9);
+  }
+
+  /* Gradient Masks */
+  .mask-fade-y {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
+  }
+
+  /* Glow Effects */
+  .glow-sm {
+    box-shadow: 0 0 10px theme('colors.brand.primary' / 30%);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 15px theme('colors.brand.primary' / 40%);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 20px theme('colors.brand.primary' / 50%);
+  }
+
+  /* Text Effects */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px theme('colors.background.primary' / 50%);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 2px 4px theme('colors.background.primary' / 50%);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px theme('colors.background.primary' / 50%);
+  }
+} 
